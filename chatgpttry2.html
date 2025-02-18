@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps API Integration</title>
+    <style>
+        /* Set the size of the map */
+        #map {
+            height: 100vh; /* Full screen height */
+            width: 100%;  /* Full screen width */
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Google Maps API Integration</h1>
+    <div id="map"></div>
+
+    <!-- Google Maps JavaScript API -->
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location (latitude, longitude)
+            const location = { lat: 40.7128, lng: -74.0060 }; // New York City
+
+            // Create the map, centered at the location
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: location,
+            });
+
+            // Add a marker at the location
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+            });
+        }
+    </script>
+
+    <!-- Replace YOUR_API_KEY with your actual API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbn7gBhdNDUELzoYjpZ4Ys6CZcTYC924E&Y&callback=initMap" async defer></script>
+</body>
+</html>
+

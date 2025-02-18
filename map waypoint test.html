@@ -1,0 +1,104 @@
+s<!DOCTYPE html>
+<html>
+  <head>
+    <h1>Drone Map Test</h1>
+    <title>My map</title>
+    <!-- Replace version in the URL with desired library version -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.1/maps/maps.css"
+    />
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.1/maps/maps-web.min.js"></script>
+    <style>
+      .parent{
+        border: 5px #333 solid;
+        display:flex;
+        width: 100%;
+      }
+
+      #map {
+      
+        margin: auto;
+        height: 350px;
+        width: 700px;
+        margin-top: auto;
+        border: 5px #a72f2f solid;
+      }
+      #container {
+        margin-left: auto;
+        width: 400px;
+        height: 275px;
+        border: 10px #333 solid;
+    }
+        #videoElement {
+          margin-left: auto;
+        width: 400px;
+        height: 275px;
+        background-color: #666;
+    }   
+    </style>
+  </head>
+
+  <body>
+  <button type="button">Click Me!</button>
+  <div class = "parent"> 
+    <div id="container">
+        <video autoplay="true" id="videoElement">
+        
+        </video>
+    </div>
+
+    <div id="map"></div> 
+  </div> 
+
+    <script>
+      var video = document.querySelector("#videoElement");
+
+        if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+            video.srcObject = stream;
+            })
+            .catch(function (error) {
+            console.log("Something went wrong!");
+            });
+        }  
+
+        var locx = 121.104782;
+        var locy = 14.543957;
+
+
+        var map = tt.map({
+        container: "map",
+        key: "I4bOclPvA9G8rnzGPKt3yrOwPpnFOzyv",
+        center: [locx,locy],
+        zoom: 15,
+      })
+
+var coord1 = [];
+var coord2 = [];
+   function newP(){
+      var radius = 0.01; 
+      var x = (Math.random() * radius) + locx;//121.412640
+    //  console.log(x+"x");
+      var y = (Math.random() * radius) + locy; //14.470193//long, lat. Basically baliktad siya sa gmaps na coordinates
+   //   console.log(y+"y");
+      coord1.push(x);
+      coord2.push(y);
+      var i = 0;
+      if (i < 10) {
+        console.log(coord1);
+        console.log(coord2);
+         } 
+      }
+
+    setInterval(newP, 1000);  
+
+    
+
+
+    </script>
+
+  </body>
+</html>

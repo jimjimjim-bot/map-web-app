@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <h1>Drone Map Test</h1>
+    <title>My map</title>
+    <!-- Replace version in the URL with desired library version -->
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v3.0.1/maptiler-sdk.css" rel="stylesheet" />
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.0.1/maptiler-sdk.umd.min.js"></script>
+    <style>
+      .parent{
+        border: 5px #333 solid;
+        display:flex;
+        width: 100%;
+      }
+
+      #map {
+      
+        margin: auto;
+        height: 350px;
+        width: 700px;
+        margin-top: auto;
+        border: 5px #a72f2f solid;
+      }
+      #container {
+        margin-left: auto;
+        width: 400px;
+        height: 275px;
+        border: 10px #333 solid;
+    }
+        #videoElement {
+          margin-left: auto;
+        width: 400px;
+        height: 275px;
+        background-color: #666;
+    }   
+    </style>
+  </head>
+
+  <body>
+  <button type="button">Click Me!</button>
+  <div class = "parent"> 
+    <div id="container">
+        <video autoplay="true" id="videoElement">
+        
+        </video>
+    </div>
+
+    <div id="map"></div> 
+  </div> 
+    <script>
+
+       
+      var video = document.querySelector("#videoElement");
+
+        if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+            video.srcObject = stream;
+            })
+            .catch(function (error) {
+            console.log("Something went wrong!");
+            });
+        }  
+
+
+
+
+
+        //for maps
+        maptilersdk.config.apiKey = 'NFg6S1LgLFaoz8AWXlOA';
+            var map = new maptilersdk.Map({
+                container: 'map',
+                style: maptilersdk.MapStyle.STREETS,
+                zoom: 0
+            });
+        //for updating maps
+
+
+        var locx = -77.0364;
+        var locy = 38.8816;    
+        var coord1 = [];
+        var coord2 = [];
+        var coord3 = [];
+
+  map.on('load', function () {
+        var geo = {
+                      'type': 'FeatureCollection',
+                      'features': [
+                          {
+                              'type': 'Feature',
+                              'geometry': {
+                                  'type': 'LineString',
+                                  'coordinates': [[locx, locy]]
+                              }
+                          }
+                      ]
+                  };
+         
+         geo.features[0].geometry.coordinates = coord3;
+
+         map.addSource('wow', { type: 'geojson', data: geo });         
+         map.addLayer({
+                    'id': 'wow',
+                    'type': 'line',
+                    'source': 'wow',
+                    'paint': {
+                        'line-color': 'red',
+                        'line-opacity': 1,
+                        'line-width': 5
+                    }
+                });   
+               
+        var i = 0;
+        var timer = window.setInterval(function () {
+          if (i < 50) {
+                  var radius = 0.01; 
+                  var x = (Math.random() * radius) + locx;//121.412640
+                //  console.log(x+"x");
+                  var y = (Math.random() * radius) + locy; //14.470193//long, lat. Basically baliktad siya sa gmaps na coordinates
+                //   console.log(y+"y");
+                //  coord1.push(x);
+                //  coord2.push(y);
+                  coord3.push([x,y])      
+                console.log( geo.features[0].geometry.coordinates);
+                var center = [];
+                center = geo.features[0].geometry.coordinates;
+                map.getSource('wow').setData(geo);
+                map.jumpTo({ 'center': center[i], 'zoom': 14 });
+                map.setPitch(30);
+          } else {
+                        window.clearInterval(timer);
+                    }
+                }, 500);
+              }
+  );
+
+
+    //function newP(){
+   //   var radius = 0.01; 
+    //  var x = (Math.random() * radius) + locx;//121.412640
+    //  console.log(x+"x");
+    //  var y = (Math.random() * radius) + locy; //14.470193//long, lat. Basically baliktad siya sa gmaps na coordinates
+    //  console.log(y+"y");
+    //  var marker = new tt.Marker().setLngLat([x,y]).addTo(map);
+    //  }
+
+  //  setInterval(newP, 1000);
+
+    
+  
+
+    </script>
+
+  </body>
+</html>

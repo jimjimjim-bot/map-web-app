@@ -1,0 +1,48 @@
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+      .parent{
+        border: 5px #333 solid;
+        display:flex;
+        width: 100%;
+      } 
+
+      #map {
+      
+        margin: auto;
+        height: 350px;
+        width: 700px;
+        margin-top: auto;
+        border: 5px #a72f2f solid;
+      }
+      #container {
+        
+        margin-left: auto;
+        width: 400px;
+        height: 275px;
+        min-width: 300px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border: 10px #333 solid;
+    }
+        #videoElement {
+          flex:1;
+        margin-left: auto;
+        width: 400px;
+        height: 275px;
+        min-width: 300px;
+        background-color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        background-color: #666;
+        padding-bottom: 56.25%
+    }   
