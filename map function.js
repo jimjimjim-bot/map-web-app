@@ -61,6 +61,7 @@ map.on("load", function () {
           var x = gps.LNG  // 121.0869 + Math.random() * 0.01; 
           var y = gps.LAT //14.692901 - Math.random() * 0.01; //
 
+
           console.log(coord3);
 
           coord3.push([x, y]);
