@@ -3,10 +3,10 @@
   <head>
     <h1>Drone Map Test</h1>
     <title>My map</title>
-    <!-- Replace version in the URL with desired library version -->  
 
-   <script defer src="map function.js" defer></script>
-  <script defer src="test firebase.js" defer></script>        
+    <script defer src="map function.js" defer></script>
+    <script defer src="test firebase.js" defer></script>
+    <script defer src="video-element.js" defer></script>
     <link
       href="https://cdn.maptiler.com/maptiler-sdk-js/v3.0.1/maptiler-sdk.css"
       rel="stylesheet"
@@ -17,12 +17,10 @@
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
-
-
   </head>
 
   <body>
-    <button type="button">Click Me!</button>
+    <button class="btn btn-success col-sm-3" id="action">Start Tracking</button>
     <div class="parent">
       <div id="container">
         <video autoplay="true" id="videoElement"></video>
@@ -30,7 +28,5 @@
 
       <div id="map"></div>
     </div>
-
-    
   </body>
 </html>

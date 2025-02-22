@@ -1,48 +1,121 @@
-      body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
+/* CSS Variables for consistent styling */
+:root {
+  --primary-color: #dfd6d6;
+  --secondary-color: #28a745;
+  --background-color: #881313;
+  --text-color: #333;
+  --card-background: #ffffff;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
 
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-      .parent{
-        border: 5px #333 solid;
-        display:flex;
-        width: 100%;
-      } 
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-      #map {
-      
-        margin: auto;
-        height: 350px;
-        width: 700px;
-        margin-top: auto;
-        border: 5px #a72f2f solid;
-      }
-      #container {
-        
-        margin-left: auto;
-        width: 400px;
-        height: 275px;
-        min-width: 300px;
-        background-color: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        border: 10px #333 solid;
-    }
-        #videoElement {
-          flex:1;
-        margin-left: auto;
-        width: 400px;
-        height: 275px;
-        min-width: 300px;
-        background-color: #fff;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        background-color: #666;
-        padding-bottom: 56.25%
-    }   
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+/* Button Styling */
+#action {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+#action:hover {
+  background-color: darken(var(--secondary-color), 10%);
+  transform: translateY(-2px);
+}
+
+#action:active {
+  transform: translateY(0);
+}
+
+/* Parent Container */
+.parent {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 1500px;
+  background-color: var(--card-background);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+/* Video Container */
+#container {
+  background-color: #000;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  aspect-ratio: 16 / 9; /* Horizontal aspect ratio */
+  width: 100%; /* Take up full width of its grid cell */
+}
+
+#videoElement {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure video fills the container */
+  border-radius: var(--border-radius);
+}
+
+/* Map Container */
+#map {
+  height: 500px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .parent {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  #map {
+    height: 300px;
+  }
+
+  #container {
+    aspect-ratio: 16 / 9; /* Maintain horizontal aspect ratio on mobile */
+  }
+}

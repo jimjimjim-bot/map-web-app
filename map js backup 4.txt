@@ -32,19 +32,15 @@ map.on("load", function () {
     id: "wow",
     type: "line",
     source: "wow",
-    layout: {
-      "line-join": "round",
-      "line-cap": "round",
-    },
     paint: {
       "line-color": "red",
       "line-opacity": 1,
-      "line-width": 3,
+      "line-width": 5,
     },
   });
   const droneMarker = new maptilersdk.Marker({ color: "#FF0000" })
-    .setLngLat([0, 0])
-    .addTo(map);
+  .setLngLat([0, 0])
+  .addTo(map);
 
   //Randomized map location based on starting coordinate (for testing polyline)
   var i = 0;
@@ -65,9 +61,11 @@ map.on("load", function () {
 
           coord3.push([x, y]);
           map.getSource("wow").setData(geo);
-          map.jumpTo({ center: [x, y], zoom: 18 });
+          map.jumpTo({ center: [x, y], zoom: 17 });
           map.setPitch(30);
           droneMarker.setLngLat([x, y]);
+      
+            
         },
 
         function (error) {
