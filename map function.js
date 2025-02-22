@@ -87,7 +87,7 @@ map.on("load", function () {
   // Function to start the interval
   const startFunction = () => {
     if (!isRunning) {
-      intervalId = setInterval(timer, 500); // Run the function every 1 second
+      intervalId = setInterval(timer, 100); // Run the function every 1 second
       isRunning = true;
       console.log("Function started.");
     }
