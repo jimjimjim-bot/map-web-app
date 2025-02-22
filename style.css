@@ -1,10 +1,10 @@
 /* CSS Variables for consistent styling */
 :root {
-  --primary-color: #dfd6d6;
-  --secondary-color: #28a745;
-  --background-color: #881313;
+  --primary-color: #177fe7;
+  --secondary-color: #f0ec11;
+  --background-color: #5f1223;
   --text-color: #333;
-  --card-background: #ffffff;
+  --card-background:  #ffffff;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   --border-radius: 12px;
   --transition: all 0.3s ease;
@@ -26,13 +26,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 90vh;
   padding: 20px;
 }
 
 h1 {
   font-size: 2.5rem;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: var(--primary-color);
   text-align: center;
 }
@@ -42,7 +42,7 @@ h1 {
   padding: 12px 24px;
   font-size: 1rem;
   background-color: var(--secondary-color);
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -66,11 +66,18 @@ h1 {
   grid-template-columns: 1fr 2fr;
   gap: 20px;
   width: 100%;
-  max-width: 1500px;
+  max-width: 1200px;
   background-color: var(--card-background);
   padding: 20px;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
+}
+
+/* Video Wrapper */
+#video-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* Video Container */
@@ -81,7 +88,6 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   aspect-ratio: 16 / 9; /* Horizontal aspect ratio */
   width: 100%; /* Take up full width of its grid cell */
 }
@@ -91,6 +97,22 @@ h1 {
   height: 100%;
   object-fit: cover; /* Ensure video fills the container */
   border-radius: var(--border-radius);
+}
+
+/* Coordinates Display */
+#coordinates {
+  font-size: 1rem;
+  color: var(--text-color);
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 8px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+#coordinates span {
+  font-weight: bold;
+  color: var(--primary-color);
 }
 
 /* Map Container */

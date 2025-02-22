@@ -21,11 +21,18 @@
 
   <body>
     <button class="btn btn-success col-sm-3" id="action">Start Tracking</button>
-    <div class="parent">
-      <div id="container">
-        <video autoplay="true" id="videoElement"></video>
-      </div>
 
+    <div class="parent">
+      <div id="video-wrapper">
+        <div id="container">
+          <video autoplay="true" id="videoElement"></video>
+        </div>
+        <!-- Coordinates Display -->
+        <div id="coordinates">
+          Latitude: <span id="latitude">0</span>, Longitude: <span id="longitude">0</span>
+        </div>
+      </div>
+      
       <div id="map"></div>
     </div>
   </body>
