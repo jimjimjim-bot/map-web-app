@@ -67,7 +67,6 @@ map.on("load", function () {
           coord3.push([x, y]);
           map.getSource("wow").setData(geo);
           map.jumpTo({ center: [x, y], zoom: 18 });
-          map.setPitch(30);
           droneMarker.setLngLat([x, y]);
         },
 
