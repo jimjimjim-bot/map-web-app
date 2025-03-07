@@ -38,7 +38,7 @@ map.on("load", function () {
     },
     paint: {
       "line-color": "red",
-      "line-opacity": 1,
+      "line-opacity": 0.8,
       "line-width": 3,
     },
   });
@@ -49,7 +49,7 @@ map.on("load", function () {
   //Randomized map location based on starting coordinate (for testing polyline)
   var i = 0;
   var o = 1;
-
+  
   var timer = function () {
     if (i < o) {
       var reff = app.database().ref();
@@ -58,15 +58,15 @@ map.on("load", function () {
         "value",
         function (snapshot) {
           var gps = snapshot.val();
-          var x =   gps.LNG;//121.0869 + Math.random() * 0.01; //
-          var y =   gps.LAT;//14.692901 - Math.random() * 0.01; //
+          var x =  gps.LNG; //121.0869 + Math.random() * 0.01; //
+          var y =   gps.LAT; //14.692901 - Math.random() * 0.01;//
 
 
           console.log(coord3);
 
           coord3.push([x, y]);
           map.getSource("wow").setData(geo);
-          map.jumpTo({ center: [x, y], zoom: 18 });
+          map.jumpTo({ center: [x, y], zoom: 19 });
           droneMarker.setLngLat([x, y]);
           const latitudeElement = document.getElementById("latitude");
           const longitudeElement = document.getElementById("longitude");
@@ -107,7 +107,7 @@ map.on("load", function () {
   };
 
   // Toggle function on button click
-  const toggleButton = document.getElementById("action");
+  const toggleButton = document.getElementById("toggleTracking");
   toggleButton.addEventListener("click", () => {
     if (isRunning) {
       stopFunction();

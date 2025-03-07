@@ -1,143 +1,133 @@
-/* CSS Variables for consistent styling */
-:root {
-  --primary-color: #177fe7;
-  --secondary-color: #f0ec11;
-  --background-color: #5f1223;
-  --text-color: #333;
-  --card-background:  #ffffff;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --border-radius: 12px;
-  --transition: all 0.3s ease;
-}
-
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 90vh;
-  padding: 20px;
+    display: flex;
+    font-family: Roboto, sans-serif;
+    background-color: #2D6CA7;
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    color: #003366;
+    padding-top: 70px;
 }
-
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: var(--primary-color);
-  text-align: center;
+.webcam-panel {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    max-width: 1500px;
+    align-items: center;
+    margin-top: 10px;
 }
-
-/* Button Styling */
-#action {
-  padding: 12px 24px;
-  font-size: 1rem;
-  background-color: var(--secondary-color);
-  color: rgb(0, 0, 0);
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-  margin-bottom: 20px;
+.cam-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: #F8F9FA;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    margin-left: 2px;
 }
-
-#action:hover {
-  background-color: darken(var(--secondary-color), 10%);
-  transform: translateY(-2px);
+/*.buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-left: 180px;
+}*/
+.webcam {
+    width: 100%;
+    background: #333;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F8F9FA;
+    font-size: 18px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
 }
-
-#action:active {
-  transform: translateY(0);
-}
-
-/* Parent Container */
-.parent {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-  background-color: var(--card-background);
-  padding: 20px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-}
-
-/* Video Wrapper */
-#video-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Video Container */
-#container {
-  background-color: #000;
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 16 / 9; /* Horizontal aspect ratio */
-  width: 100%; /* Take up full width of its grid cell */
-}
-
 #videoElement {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure video fills the container */
-  border-radius: var(--border-radius);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: var(--border-radius);
 }
+button {
+    padding: 12px 24px;
 
-/* Coordinates Display */
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #FFD700;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+    border: none; 
+    border-radius: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+button:hover {
+    background-color: #FFC107;
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+.map-container {
+    width:  100%;
+    height: 550px;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 3px solid #0056b3;
+    background: #e0e0e0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 2px;
+}
+.map-panel {
+    width: 200%;
+    max-width: 700%; 
+    margin-top: 30px;
+    padding: 20px;
+    background: #F8F9FA;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+.footer {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    font-size: 12px;
+    color: black;
+}
+.header {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    justify-content: space-between;
+    background-color: #F8F9FA;
+    width: 100%;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.logo {
+    height: 50px;
+    width: auto;
+    margin: 0 10px;
+}
 #coordinates {
-  font-size: 1rem;
-  color: var(--text-color);
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 8px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-}
-
-#coordinates span {
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-/* Map Container */
-#map {
-  height: 500px;
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .parent {
-    grid-template-columns: 1fr;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  #map {
-    height: 300px;
-  }
-
-  #container {
-    aspect-ratio: 16 / 9; /* Maintain horizontal aspect ratio on mobile */
-  }
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
 }

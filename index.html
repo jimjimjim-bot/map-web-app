@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <h1>Drone Map Test</h1>
-    <title>My map</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPV Drone GPS Tracker</title>
 
     <script defer src="map function.js" defer></script>
-    <script defer src="test firebase.js" defer></script>
-    <script defer src="video-element.js" defer></script>
-    <link
+   <!-- <script type="module" src="firebase.js"></script> -->
+    <script defer src="videoElement.js" defer></script>
+
+    <link rel="stylesheet" href="style.css" />
+
+        <link
       href="https://cdn.maptiler.com/maptiler-sdk-js/v3.0.1/maptiler-sdk.css"
       rel="stylesheet"
     />
@@ -17,23 +21,103 @@
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
-  </head>
 
-  <body>
-    <button class="btn btn-success col-sm-3" id="action">Start Tracking</button>
+</head>
 
-    <div class="parent">
-      <div id="video-wrapper">
-        <div id="container">
-          <video autoplay="true" id="videoElement"></video>
-        </div>
-        <!-- Coordinates Display -->
-        <div id="coordinates">
-          Latitude: <span id="latitude">0</span>, Longitude: <span id="longitude">0</span>
-        </div>
-      </div>
-      
-      <div id="map"></div>
+<script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyB9ATjteo1Q6PRNzaICCsf6j8voQkKTwh8",
+    authDomain: "gps-data-12896.firebaseapp.com",
+    databaseURL:
+      "https://gps-data-12896-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "gps-data-12896",
+    storageBucket: "gps-data-12896.firebasestorage.app",
+    messagingSenderId: "270489369272",
+    appId: "1:270489369272:web:b8331db8b2aeb89c7b924d",
+  };
+  const app = firebase.initializeApp(firebaseConfig);
+</script>
+
+<body>
+    <div class="header">
+        <img src="rtulg.png" alt="RTU Logo" class="logo">
+        <div class="title"><strong>FPV Drone Real-Time GPS Tracking</strong></div>
+        <img src="ce.png" alt="Department Logo" class="logo">
     </div>
-  </body>
+
+    <div class="webcam-panel">
+        <div class="cam-panel">
+            <label for="webcam-feed"><strong>FPV Drone Webcam</strong></label>
+            <div class="webcam" id="webcam-feed">
+                <video autoplay="true" id="videoElement"></video>
+            </div>
+        <div class = "buttons">
+            <button id="toggleTracking">Start Tracking</button>
+           <!-- <button id="toggleCenter">Center Map</button> -->
+        </div>
+    </div>
+
+    <div class="map-panel">
+        <div class="map-container" id="map">
+            <div id="coordinates">
+                Latitude: <span id="latitude">0</span>, Longitude: <span id="longitude">0</span>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2025 TESES FPV Drone Tracker. All rights reserved.
+    </div>
+
+
+
+
+
+
+ <!--  <script>
+        var map = L.map('map').setView([14.1407, 121.4692], 15); // Laguna
+        L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=IwxpGky57Tom6RgRlxo3', {
+            attribution: '&copy; <a href="https://www.maptiler.com/">MapTiler</a> & OpenStreetMap contributors'
+        }).addTo(map);
+
+        var coordinates = document.getElementById('coordinates');
+        let marker = L.marker([14.1407, 121.4692]).addTo(map);
+
+        function updateMarker(lat, lng) {
+            marker.setLatLng([lat, lng]);
+            map.setView([lat, lng], 15);
+            coordinates.innerHTML = `Latitude: ${lat.toFixed(5)}, Longitude: ${lng.toFixed(5)}`;
+        }
+
+        const gpsRef = database.ref('gps');
+        gpsRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                const { latitude, longitude } = data;
+                updateMarker(latitude, longitude);
+            }
+        });
+
+        let tracking = false;
+        let trackingInterval;
+
+        document.getElementById('toggleTracking').addEventListener('click', function () {
+            tracking = !tracking;
+
+            if (tracking) {
+                trackingInterval = setInterval(() => {
+                    const lat = 14.1407 + (Math.random() - 0.5) * 0.01; // sample lang
+                    const lng = 121.4692 + (Math.random() - 0.5) * 0.01; // sample lang
+                    gpsRef.set({ latitude: lat, longitude: lng });
+                    console.log("Updated GPS:", lat, lng);
+                }, 3000);
+                console.log("Tracking started");
+            } else {
+                clearInterval(trackingInterval);
+                console.log("Tracking stopped");
+            }
+        });
+    </script>     --> 
+</body>
 </html>
