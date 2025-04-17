@@ -2,7 +2,7 @@
 maptilersdk.config.apiKey = "NFg6S1LgLFaoz8AWXlOA";
 var map = new maptilersdk.Map({
   container: "map",
-  style: maptilersdk.MapStyle.STREETS,
+  style: maptilersdk.MapStyle.BASIC,
   center: [0, 0],
   zoom: 0,
 });
@@ -58,8 +58,8 @@ map.on("load", function () {
         "value",
         function (snapshot) {
           var gps = snapshot.val();
-          var x =  gps.LNG; //121.0869 + Math.random() * 0.01; //
-          var y =   gps.LAT; //14.692901 - Math.random() * 0.01;//
+          var x =121.0869 + Math.random() * 0.01; // gps.LNG; // //
+          var y = 14.692901 - Math.random() * 0.01; // gps.LAT; ////
 
 
           console.log(coord3);
