@@ -140,7 +140,7 @@ button:hover {
 
 .footer {
     position: absolute;
-    bottom: 1px;
+    bottom: -80px;
     left: 20px;
     font-size: 12px;
     color: black;
